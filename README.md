@@ -1,48 +1,72 @@
-\# JWT Authentication Attack \& Secure Fix Lab
+# JWT Authentication Attack & Secure Fix Lab
 
+## Overview
+This project demonstrates how **improper JWT validation** can lead to authentication bypass and privilege escalation.
 
+It shows both:
+- How attackers exploit JWT implementation flaws
+- How secure validation prevents these attacks
 
-\## Overview
+The lab is designed from an **attacker-to-defender** perspective.
 
-This lab demonstrates how insecure JWT validation can lead to authentication bypass.
+---
 
+## Problem Statement
+Many applications implement JWT-based authentication without fully understanding:
+- Signature verification
+- Algorithm enforcement
+- Token trust boundaries
 
+This often results in critical authentication vulnerabilities.
 
-\## Vulnerability
+---
 
-\- Signature verification disabled
+## What This Project Does
+- Implements a vulnerable JWT authentication flow
+- Exploits the `alg:none` vulnerability to gain admin access
+- Demonstrates a secure implementation with proper validation
 
-\- alg:none attack possible
+---
 
+## Attack Scenario
+1. Application disables JWT signature verification
+2. Attacker forges a JWT token with elevated privileges
+3. Application trusts the token without verification
+4. Unauthorized admin access is granted
 
+---
 
-\## Exploit
+## Secure Fix
+- Enforced algorithm validation
+- Enabled signature verification
+- Proper error handling for invalid tokens
 
-An attacker can forge a JWT token with admin privileges.
+---
 
+## Security Concepts Covered
+- JWT internals
+- Authentication vs authorization
+- Token trust boundaries
+- Secure implementation practices
 
+---
 
-\## Fix
+## Tech Stack
+- Python
+- Flask
+- JSON Web Tokens (JWT)
 
-\- Enforced algorithm validation
+---
 
-\- Signature verification enabled
+## Why This Matters
+JWT vulnerabilities directly lead to:
+- Account takeover
+- Privilege escalation
+- Full application compromise
 
+This project reflects real-world AppSec issues seen in production systems.
 
+---
 
-\## Tech Stack
-
-\- Python
-
-\- Flask
-
-\- JWT
-
-
-
-\## Learning Outcome
-
-Understanding JWT internals from an attacker and defender perspective.
-
-
-
+## Disclaimer
+This lab is for educational and defensive security research only.
